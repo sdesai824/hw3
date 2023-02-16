@@ -1,14 +1,14 @@
 <h1><%= @place["name"] %></h1>
 
-<h3>Posts</h3>
+<h2>See your posts below:</h2>
 
-<ul>
+<p>
   <% for post in @posts %>
-    <h2> <%= post["title"] %> </h2>
-    <li> <%= post["posted_on"] %>  </li>
-    <li> <%= post["description"] %>  </li>
+    <h3> <%= post["title"] %> </h3>
+    <p> <%= post["posted_on"] %>  </p>
+    <p> <%= post["description"] %>  </p>
   <% end %>
-</ul>
+</p>
 
 
 <p>
