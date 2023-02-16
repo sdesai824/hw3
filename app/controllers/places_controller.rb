@@ -7,7 +7,7 @@ class PlacesController < ApplicationController
 
     def show
         @place = Place.find_by({ "id" => params["id"] })
-        @post = Post.where({ "post_id" => @place["id"] })
+        @post = Post.where({ "place_id" => @place["id"] })
     end
 
     def new
@@ -20,14 +20,11 @@ class PlacesController < ApplicationController
         @place.save
         redirect_to "/places"
     end
-    
-
-    
 
     def destroy
         @place = Place.find_by({ "id" => params["id"] })
         @place.destroy
-        redirect_to "/companies"
+        redirect_to "/places"
     end
 
 end

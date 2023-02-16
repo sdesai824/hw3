@@ -6,8 +6,22 @@ class PostsController < ApplicationController
     end
 
     def show
-        @posts = Post.find_by({ "id" => params["id"] })
-        @places = Place.where({ "company_id" => @posts["id"] })
+        @place = Place.find_by({ "id" => params["id"] })
+        @post = Post.where({ "place_id" => @place["id"] })
     end
+
+    def new
+        @post = Post.new
+    end
+
+    def create
+        @post = Place.new
+        @post["title"] = params["post"]["title"]
+        @post["posted_on"] = params["post"]["posted_on"]
+        @post["description"] = params["post"]["description"]
+        @post.save
+        redirect_to "/places"
+    end
+
 
 end
