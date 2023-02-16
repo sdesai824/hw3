@@ -1,5 +1,7 @@
 <h1><%= @place["name"] %></h1>
 
+<h3>Posts</h3>
+
 <ul>
   <% for post in @posts %>
     <h2> <%= post["title"] %> </h2>
@@ -9,7 +11,10 @@
 </ul>
 
 
+<p>
+  <a href="/posts/new?place_id=<%= @place["id"] %>">Click here to add a post</a>
+</p>
 
-<p><a href="/places">Back to All Okaces</a></p>
+<p><a href="/places">Back to All Places</a></p>
 
 <p><%= button_to "Delete this place", @place, :method => "delete" %></p>

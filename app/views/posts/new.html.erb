@@ -1,20 +1,16 @@
-<h1><%= @company["name"] %></h1>
 
-<h2><%= @company["city"] %>, <%= @company["state"] %></h2>
+<h1>New post</h1>
 
-<h3>Contacts</h3>
-
-<ul>
-  <% for contact in @contacts %>
-    <li><%= contact["last_name"] %>, <%= contact["first_name"] %></li>
-  <% end %>
-</ul>
-
-<p>
-  <a href="/contacts/new?company_id=<%= @company["id"] %>">New Contact</a>
-</p>
-
-<p><a href="/companies">Back to All Companies</a></p>
-
-<p><%= button_to "Delete this company", @company, :method => "delete" %></p>
-  
+<%= form_with :model => @post do |form| %>
+  <p>
+    <%= form.label "title" %>
+    <%= form.text_field "title" %>
+    <%= form.label "description" %>
+    <%= form.text_field "description" %>
+    <%= form.label "Posted on" %>
+    <%= form.date_field "posted_on" %>
+  </p>
+  <!-- So we can transfer state from the previous action to the next -->
+  <%= form.hidden_field "place_id" %>
+  <%= form.submit %>
+<% end %>
